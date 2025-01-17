@@ -1,6 +1,8 @@
 package com.timehub.configuration;
 
 import com.timehub.exceptions.DatabaseConnectionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.sql.Connection;
@@ -15,6 +17,8 @@ import static com.timehub.configuration.DatabaseConfig.*;
  */
 public class DatabaseConnection {
 
+  private static final Logger logger = LoggerFactory.getLogger(DatabaseConnection.class);
+
   /**
    * @return a {@link Connection} object which holds the connection to the database, otherwise it is
    *     null
@@ -23,27 +27,18 @@ public class DatabaseConnection {
 
     createDatabaseStoragePath();
 
-    int attempt = 0;
-    while (attempt < NUMBER_OF_CONNECTION_RETRIES) {
-      attempt++;
+    for (int i = 1; i <= NUMBER_OF_CONNECTION_RETRIES; i++) {
       try {
-        Connection conn = DriverManager.getConnection(getDatabaseUrl());
-        System.out.println("Connection to SQLite has been established.");
+        Connection conn = DriverManager.getConnection(DB_PATH);
+        logger.info("Connection to SQLite has been established.");
         return conn;
       } catch (SQLException e) {
         System.err.println(
-            "Failed to connect to SQLite database (Attempt "
-                + attempt
-                + " of "
-                + NUMBER_OF_CONNECTION_RETRIES
-                + ").");
-        if (attempt >= NUMBER_OF_CONNECTION_RETRIES) {
-          throw new DatabaseConnectionException(
-              "Failed to connect to SQLite database after "
-                  + NUMBER_OF_CONNECTION_RETRIES
-                  + " attempts.",
-              e);
-        }
+                "Failed to connect to SQLite database (Attempt "
+                        + i
+                        + " of "
+                        + NUMBER_OF_CONNECTION_RETRIES
+                        + ").");
         try {
           Thread.sleep(DURATION_TO_WAIT_BETWEEN_RETRIES);
         } catch (InterruptedException ie) {
@@ -52,7 +47,9 @@ public class DatabaseConnection {
         }
       }
     }
-    return null;
+    throw new DatabaseConnectionException(
+        "Failed to connect to SQLite database after " + NUMBER_OF_CONNECTION_RETRIES + " attempts.",
+        new RuntimeException());
   }
 
   /**
