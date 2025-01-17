@@ -12,6 +12,7 @@
         <module>core</module>
         <module>ui</module>
         <module>export</module>
+        <module>database</module>
     </modules>
 
     <dependencyManagement>
