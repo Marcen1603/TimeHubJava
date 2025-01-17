@@ -14,6 +14,10 @@ public class DatabaseConfig {
     DB_PATH = userHome + "/.timehub/app.db";
   }
 
+  /**
+   * Based on the given database path, the url of the database is returned.
+   * @return a string which represents the database url
+   */
   public static String getDatabaseUrl() {
     return "jdbc:sqlite:" + DB_PATH;
   }
