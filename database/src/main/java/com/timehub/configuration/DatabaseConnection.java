@@ -29,16 +29,15 @@ public class DatabaseConnection {
 
     for (int i = 1; i <= NUMBER_OF_CONNECTION_RETRIES; i++) {
       try {
-        Connection conn = DriverManager.getConnection(DB_PATH);
+        Connection conn = DriverManager.getConnection(getDatabaseUrl());
         logger.info("Connection to SQLite has been established.");
         return conn;
       } catch (SQLException e) {
-        System.err.println(
-                "Failed to connect to SQLite database (Attempt "
-                        + i
-                        + " of "
-                        + NUMBER_OF_CONNECTION_RETRIES
-                        + ").");
+        logger.error(
+            "Failed to connect to SQLite database (Attempt {} of "
+                + NUMBER_OF_CONNECTION_RETRIES
+                + ").",
+            i);
         try {
           Thread.sleep(DURATION_TO_WAIT_BETWEEN_RETRIES);
         } catch (InterruptedException ie) {
@@ -53,7 +52,8 @@ public class DatabaseConnection {
   }
 
   /**
-   * To store the database file, the path must exist. In this method the path to the location will be created.
+   * To store the database file, the path must exist. In this method the path to the location will
+   * be created.
    */
   private static void createDatabaseStoragePath() {
     File parentDir = new File(DB_PATH).getParentFile();
