@@ -2,6 +2,7 @@ package com.timehub.configuration;
 
 import com.timehub.exceptions.DatabaseConnectionException;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -19,11 +20,14 @@ public class DatabaseConnection {
    *     null
    */
   public static Connection getConnection() {
+
+    createDatabaseStoragePath();
+
     int attempt = 0;
     while (attempt < NUMBER_OF_CONNECTION_RETRIES) {
       attempt++;
       try {
-        Connection conn = DriverManager.getConnection(DB_URL);
+        Connection conn = DriverManager.getConnection(getDatabaseUrl());
         System.out.println("Connection to SQLite has been established.");
         return conn;
       } catch (SQLException e) {
@@ -49,5 +53,15 @@ public class DatabaseConnection {
       }
     }
     return null;
+  }
+
+  /**
+   * To store the database file, the path must exist. In this method the path to the location will be created.
+   */
+  private static void createDatabaseStoragePath() {
+    File parentDir = new File(DB_PATH).getParentFile();
+    if (!parentDir.exists() && !parentDir.mkdirs()) {
+      throw new RuntimeException("Failed to create directory: " + parentDir.getAbsolutePath());
+    }
   }
 }
