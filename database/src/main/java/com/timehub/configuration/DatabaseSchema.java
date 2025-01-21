@@ -44,4 +44,40 @@ public class DatabaseSchema {
                     );
                 """;
   }
+
+  /**
+   * Getter method which is used for the template of the To-Do database.
+   *
+   * @return a string which contains the sql statement for the TimeEntry system
+   */
+  public static String getCreateToDoTableSQL() {
+    return """
+                    CREATE TABLE IF NOT EXISTS to_dos (
+                      id INTEGER PRIMARY KEY AUTOINCREMENT,
+                      title TEXT,
+                      description TEXT,
+                      status TEXT NOT NULL
+                      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                      finished_at TIMESTAMP NOT NULL,
+                      );
+                    """;
+  }
+
+  /**
+   * Getter method which is used for the template of the Configuration database.
+   *
+   * @return a string which contains the sql statement for the TimeEntry system
+   */
+  public static String getCreateConfigurationTableSQL() {
+    return """
+                    CREATE TABLE IF NOT EXISTS configuration (
+                          id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          name TEXT,
+                          description TEXT,
+                          value TEXT,
+                          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                      );
+                    """;
+  }
 }
