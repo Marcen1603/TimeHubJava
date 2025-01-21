@@ -69,11 +69,37 @@ CREATE TABLE IF NOT EXISTS time_entries (
                           minutes INTEGER NOT NULL,
                           commit_message TEXT,
                           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                           worked_at TIMESTAMP NOT NULL,
                           FOREIGN KEY (ticket_id) REFERENCES tickets(id)
 );
 ```
 
+ToDo´s
+
+```sql
+CREATE TABLE IF NOT EXISTS to_dos (
+                          id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          title TEXT,
+                          description TEXT,
+                          status TEXT NOT NULL
+                          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                          finished_at TIMESTAMP NOT NULL,
+);
+```
+
+Configuration
+
+```sql
+CREATE TABLE IF NOT EXISTS configuration (
+                          id INTEGER PRIMARY KEY AUTOINCREMENT,
+                          name TEXT,
+                          description TEXT,
+                          value TEXT,
+                          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
 ### Formatting
 
 There are already good guidelines for some aspects of programming, including formatting in the individual programming

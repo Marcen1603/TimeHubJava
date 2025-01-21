@@ -4,8 +4,8 @@ import com.timehub.configuration.DatabaseConnection;
 
 import java.sql.Connection;
 
-import static com.timehub.configuration.DatabaseCRUD.createTables;
-import static com.timehub.configuration.DatabaseCRUD.listTables;
+import static com.timehub.configuration.CRUD.DatabaseCRUD.createTables;
+import static com.timehub.configuration.CRUD.DatabaseCRUD.listTables;
 
 public class Main {
     public static void main(String[] args) {
