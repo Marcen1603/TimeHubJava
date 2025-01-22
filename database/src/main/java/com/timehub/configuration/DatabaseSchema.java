@@ -20,6 +20,7 @@ public class DatabaseSchema {
                           status TEXT NOT NULL,
                           progress INTEGER,
                           acceptance_criteria TEXT,
+                          history TEXT,
                           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );
