@@ -55,6 +55,7 @@ CREATE TABLE IF NOT EXISTS tickets (
                           status TEXT NOT NULL,
                           progress INTEGER,
                           acceptance_criteria TEXT,
+                          history TEXT,
                           created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                           updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                     );
