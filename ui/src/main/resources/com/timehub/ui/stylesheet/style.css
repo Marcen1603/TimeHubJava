@@ -1,0 +1,31 @@
+:root {
+    --primary-background: #FF5733;
+    --menu-background: #111111;
+    --white-text-color: #EEEEEE;
+    --orange-text-color: #FF5722;
+    --less-orange-text-color: #FF7E55;
+    --grey-color: #D4D4D4;
+}
+
+.root {
+    -fx-background-color: var(--background-color);
+}
+
+.text {
+    -fx-fill: #FFFFFF;
+    -fx-font-size: 20px;
+}
+
+.button {
+    -fx-background-color: var(--orange-text-color);
+    -fx-text-fill: var(--white-text-color);
+    -fx-font-size: 16px;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.label {
+    -fx-font-size: 18px;
+    -fx-text-fill: var(--orange-text-color);
+}
