@@ -42,51 +42,56 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/21.0.0" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1080.0" stylesheets="@../stylesheet/style.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.timehub.ui.HelloController">
    <children>
       <SplitPane dividerPositions="0.225" prefHeight="650.0" prefWidth="1080.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.1404320987654321" orientation="VERTICAL" prefHeight="650.0" prefWidth="240.0">
+                  <SplitPane id="menu" dividerPositions="0.1404320987654321" orientation="VERTICAL" prefHeight="650.0" prefWidth="240.0">
                     <items>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane id="mySplitPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <ImageView fx:id="logo" fitHeight="73.0" fitWidth="184.0" layoutX="27.0" layoutY="8.0">
-                                 <image>
-                                    <Image url="@../logo/timhub_java_version_very_small_logo.png" />
-                                 </image>
-                              </ImageView>
+                              <Text fill="WHITE" layoutX="47.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TimeHub">
+                                 <font>
+                                    <Font name="Merriweather Black" size="30.0" />
+                                 </font>
+                              </Text>
+                              <Text id="logo_java_version" fill="#ff5722" layoutX="75.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="JAVA VERSION">
+                                 <font>
+                                    <Font name="Noto Sans Cypriot Regular" size="13.0" />
+                                 </font>
+                              </Text>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <Pane fx:id="menu_pane_dashboard" layoutY="10.0" prefHeight="50.0" prefWidth="238.0">
+                              <Pane fx:id="menu_pane_dashboard" layoutY="10.0" onMouseEntered="#changeDashboardOrange" onMouseExited="#changeDashboardWhite" prefHeight="50.0" prefWidth="238.0">
                                  <children>
-                                    <Label fx:id="menu_label_dashboard" prefHeight="50.0" prefWidth="238.0" text="                  Dashboard" />
-                                    <ImageView fx:id="menu_image_dashboard" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0">
+                                    <Label fx:id="menu_label_dashboard" prefHeight="50.0" prefWidth="238.0" styleClass="orange-text" text="                  Dashboard" />
+                                    <ImageView fx:id="menu_image_dashboard" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" styleClass="orange-image">
                                        <image>
                                           <Image url="@../icons/dashboard/icons8-dashboard-96.png" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </Pane>
-                              <Pane fx:id="menu_pane_tickets" layoutY="70.0" prefHeight="50.0" prefWidth="238.0">
+                              <Pane fx:id="menu_pane_tickets" layoutY="70.0" onMouseEntered="#changeTicketsOrange" onMouseExited="#changeTicketsWhite" prefHeight="50.0" prefWidth="238.0">
                                  <children>
                                     <Label fx:id="menu_label_tickets" prefHeight="50.0" prefWidth="240.0" text="                  Tickets" />
-                                    <ImageView fx:id="menu_image_tickets" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0">
+                                    <ImageView fx:id="menu_image_tickets" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" styleClass="white-image">
                                        <image>
                                           <Image url="@../icons/tickets/icons8-ticket-100.png" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </Pane>
-                              <Pane fx:id="menu_pane_backlog" layoutY="130.0" prefHeight="50.0" prefWidth="238.0">
+                              <Pane fx:id="menu_pane_backlog" layoutY="130.0" onMouseEntered="#changeBacklogOrange" onMouseExited="#changeBacklogWhite" prefHeight="50.0" prefWidth="238.0">
                                  <children>
                                     <Label fx:id="menu_label_backlog" prefHeight="50.0" prefWidth="238.0" text="                  Backlog" />
-                                    <ImageView fx:id="menu_image_backlog" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0">
+                                    <ImageView fx:id="menu_image_backlog" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" styleClass="white-image">
                                        <image>
                                           <Image url="@../icons/backlog/icons8-repository-96.png" />
                                        </image>
@@ -95,38 +100,38 @@
                               </Pane>
                               <Pane fx:id="menu_pane_todos" layoutY="180.0" prefHeight="50.0" prefWidth="238.0">
                                  <children>
-                                    <Label fx:id="menu_label_todos" prefHeight="50.0" prefWidth="238.0" text="                  ToDo's" />
-                                    <ImageView fx:id="menu_image_todos" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0">
+                                    <Label fx:id="menu_label_todos" onMouseEntered="#changeTodosOrange" onMouseExited="#changeTodosWhite" prefHeight="50.0" prefWidth="238.0" text="                  ToDo's" />
+                                    <ImageView fx:id="menu_image_todos" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" styleClass="white-image">
                                        <image>
                                           <Image url="@../icons/todo/icons8-to-do-list-100.png" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </Pane>
-                              <Pane fx:id="menu_pane_calender" layoutY="240.0" prefHeight="50.0" prefWidth="238.0">
+                              <Pane fx:id="menu_pane_calender" layoutY="240.0" onMouseEntered="#changeCalenderOrange" onMouseExited="#changeCalenderWhite" prefHeight="50.0" prefWidth="238.0">
                                  <children>
                                     <Label fx:id="menu_label_calender" prefHeight="50.0" prefWidth="240.0" text="                  Calender" />
-                                    <ImageView fx:id="menu_image_calender" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0">
+                                    <ImageView fx:id="menu_image_calender" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" styleClass="white-image">
                                        <image>
                                           <Image url="@../icons/calendar/icons8-calendar-100.png" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </Pane>
-                              <Pane fx:id="menu_pane_settings" layoutY="300.0" prefHeight="50.0" prefWidth="238.0">
+                              <Pane fx:id="menu_pane_settings" layoutY="300.0" onMouseEntered="#changeSettingsOrange" onMouseExited="#changeSettingsWhite" prefHeight="50.0" prefWidth="238.0">
                                  <children>
                                     <Label fx:id="menu_label_settings" prefHeight="50.0" prefWidth="238.0" text="                  Settings" />
-                                    <ImageView fx:id="menu_image_settings" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0">
+                                    <ImageView fx:id="menu_image_settings" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" styleClass="white-image">
                                        <image>
                                           <Image url="@../icons/settings/icons8-settings-100.png" />
                                        </image>
                                     </ImageView>
                                  </children>
                               </Pane>
-                              <Pane fx:id="menu_pane_console" layoutY="360.0" prefHeight="50.0" prefWidth="238.0">
+                              <Pane fx:id="menu_pane_console" layoutY="360.0" onMouseEntered="#changeConsoleOrange" onMouseExited="#changeConsoleWhite" prefHeight="50.0" prefWidth="238.0">
                                  <children>
                                     <Label fx:id="menu_label_console" contentDisplay="CENTER" prefHeight="50.0" prefWidth="238.0" text="                  Console" />
-                                    <ImageView fx:id="menu_image_console" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0">
+                                    <ImageView fx:id="menu_image_console" fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" styleClass="white-image">
                                        <image>
                                           <Image url="@../icons/console/icons8-console-100.png" />
                                        </image>
@@ -186,7 +191,7 @@
                                     </SplitPane>
                                     <Pane prefHeight="190.0" prefWidth="416.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <children>
-                                          <SplitPane dividerPositions="0.2" orientation="VERTICAL" prefHeight="197.0" prefWidth="416.0">
+                                          <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="197.0" prefWidth="416.0">
                                             <items>
                                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                                    <children>
@@ -198,7 +203,6 @@
                                           </SplitPane>
                                        </children>
                                     </Pane>
-                                    <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2" />
                                     <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                     <SplitPane dividerPositions="0.2" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
                                       <items>
@@ -210,7 +214,7 @@
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
                                       </items>
                                     </SplitPane>
-                                    <SplitPane dividerPositions="0.2" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.rowIndex="1">
+                                    <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" GridPane.rowIndex="1">
                                       <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                              <children>
