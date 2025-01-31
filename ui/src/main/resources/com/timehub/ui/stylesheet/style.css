@@ -37,10 +37,15 @@
     -fx-background-color: #111111 !important;
 }
 
-/* Setzt einen weißen Rand nur auf der rechten Seite des AnchorPane */
-#menu {
+/******* Border *******/
+.white-border-right {
     -fx-border-width: 0 5px 0 0;  /* oben, rechts, unten, links */
     -fx-border-color: transparent white transparent transparent; /* Randfarbe */
     -fx-border-style: solid;  /* Stil des Rands */
 }
 
+.white-border-bottom {
+    -fx-border-width: 0 0 5px 0;  /* oben, rechts, unten, links */
+    -fx-border-color: transparent transparent white transparent; /* Randfarbe */
+    -fx-border-style: solid;  /* Stil des Rands */
+}

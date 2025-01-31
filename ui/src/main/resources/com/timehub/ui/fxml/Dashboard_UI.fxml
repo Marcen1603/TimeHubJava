@@ -50,9 +50,9 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane id="menu" dividerPositions="0.1404320987654321" orientation="VERTICAL" prefHeight="650.0" prefWidth="240.0">
+                  <SplitPane dividerPositions="0.1404320987654321" orientation="VERTICAL" prefHeight="650.0" prefWidth="240.0" styleClass="white-border-right">
                     <items>
-                      <AnchorPane id="mySplitPane" minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" styleClass="white-border-bottom">
                            <children>
                               <Text fill="WHITE" layoutX="47.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TimeHub">
                                  <font>
